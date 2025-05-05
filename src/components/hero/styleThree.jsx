@@ -68,7 +68,7 @@ function HeroSectionStyleThree({ data }) {
                 <div
                 className="ltn__slide-item ltn__slide-item-2 ltn__slide-item-3 bg-image bg-overlay-theme-black-60"
                   style={{
-                    backgroundImage: `url("../img/slider/${item.bgImage}")`,
+                    backgroundImage: `url("${item.bgImage}")`,
                   }}
                 >
                   <div

@@ -1,9 +1,9 @@
-import TitleSection from "@/components/titleSection";
-import { productSlug } from "@/lib/product";
 import Link from "next/link";
-import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import TitleSection from "@/components/titleSection";
+import { productSlug } from "@/lib/product";
 function Feature({
   data,
   iconTag,
@@ -11,7 +11,6 @@ function Feature({
   titleSectionData,
   classes,
   headingClasses,
-  isActive = undefined, // optionnel, pour compatibilité future
 }) {
   return (
     <>
@@ -29,11 +28,6 @@ function Feature({
           <Row className="justify-content-center">
             {data.map((item, key) => {
               const slug = productSlug(item.title);
-              // On considère inactive si item.active === false ou item.isActive === false
-              const isActive =
-                item.isActive !== undefined
-                  ? item.isActive
-                  : item.active !== false;
               return (
                 <Col key={key} xs={12} sm={6} lg={4}>
                   <div
@@ -54,15 +48,15 @@ function Feature({
                       )}
                     </div>
                     <div className="ltn__feature-info">
-                      <h5>
-                        <Link href={`/shop`}>{item.title}</Link>
-                      </h5>
+                      <h3>
+                        <Link href={`/service/${slug}`}>{item.title}</Link>
+                      </h3>
                       <p>{item.shortDescription}</p>
 
                       {servicebtn ? (
                         <Link
                           className="ltn__service-btn"
-                          href={`/shop`}
+                          href={`/service/${slug}`}
                         >
                           {item.buttonText}
 

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
@@ -21,10 +22,10 @@ function AboutUsStyleOne({ sectionSpace }) {
           <Row>
             <Col xs={12} lg={6} className="align-self-center">
               <div className="about-us-img-wrap about-img-left">
-                <img src="/img/others/7.png" alt="Image 3D Loca" />
+                <Image src="/img/others/7.png" alt="Image 3D Loca" width={500} height={400} />
                 <div className="about-us-img-info about-us-img-info-2 about-us-img-info-3">
                   <div className="ltn__video-img ltn__animation-pulse1">
-                    <img src="/img/others/8.png" alt="Image popup video" />
+                    <Image src="/img/others/8.png" alt="Image popup video" width={150} height={120} />
                     <button
                       onClick={() => setOpen(true)}
                       className="ltn__video-icon-2"

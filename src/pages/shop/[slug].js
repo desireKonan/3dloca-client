@@ -24,7 +24,7 @@ import BreadCrumb from "@/components/breadCrumbs";
 
 import { LayoutOne } from "@/layouts";
 import { useSelector } from "react-redux";
-import { getProducts, productSlug, getDiscountPrice } from "@/lib/product";
+import { getProducts, getDiscountPrice } from "@/lib/product";
 import products from "@/data/products.json";
 import { Container, Row, Col, Nav, Tab } from "react-bootstrap";
 import RelatedProduct from "@/components/product/related-product";
@@ -42,28 +42,29 @@ function ProductDetails({ product }) {
 
   const relatedProducts = getProducts(
     products,
-    product.category[0],
+    // product.category[0],
     "popular",
     2
   );
 
   const topRatedProducts = getProducts(
     products,
-    product.category[0],
+    // product.category[0],
     "topRated",
     2
   );
   const popularProducts = getProducts(
     products,
-    product.category[0],
+    // product.category[0],
     "popular",
     4
   );
 
-  const discountedPrice = getDiscountPrice(
-    product.price,
-    product.discount
-  ).toFixed(2);
+  // const discountedPrice = getDiscountPrice(
+  //   product.price,
+  //   product.price,
+  //   // product.discount
+  // ).toFixed(2);
 
   const productPrice = product.price.toFixed(2);
   const cartItem = cartItems.find((cartItem) => cartItem.id === product.id);
@@ -1044,10 +1045,10 @@ function ProductDetails({ product }) {
                   <Row>
                     {relatedProducts.map((data, key) => {
                       const slug = productSlug(data.title);
-                      const discountedPrice = getDiscountPrice(
-                        product.price,
-                        product.discount
-                      ).toFixed(2);
+                      // const discountedPrice = getDiscountPrice(
+                      //   product.price,
+                      //   product.discount
+                      // ).toFixed(2);
                       const productPrice = product.price.toFixed(2);
                       const cartItem = cartItems.find(
                         (cartItem) => cartItem.id === product.id
@@ -1064,7 +1065,7 @@ function ProductDetails({ product }) {
                             productData={data}
                             slug={slug}
                             baseUrl="shop"
-                            discountedPrice={discountedPrice}
+                            discountedPrice={0}
                             productPrice={productPrice}
                             cartItem={cartItem}
                             wishlistItem={wishlistItem}
@@ -1249,7 +1250,7 @@ function ProductDetails({ product }) {
                                 </h6>
                                 <div className="product-price">
                                   <span>${product.price}</span>
-                                  <del>${discountedPrice}</del>
+                                  {/* <del>${discountedPrice}</del> */}
                                 </div>
                               </div>
                             </div>
@@ -1447,20 +1448,29 @@ function ProductDetails({ product }) {
 
 export default ProductDetails;
 
-export async function getStaticProps({ params }) {
-  // get product data based on slug
-  const product = products.filter(
-    (single) => productSlug(single.title) === params.slug
-  )[0];
+import api from "@/api";
 
-  return { props: { product } };
+import { productSlug } from "@/lib/product";
+
+export async function getServerSideProps({ params }) {
+  try {
+    // 1. Récupérer la liste des annonces
+    const listRes = await api.get("/annonces");
+    const annonces = listRes.data;
+    // 2. Trouver l'annonce dont le slug correspond
+    const annonce = annonces.find((a) => productSlug(a.title) === params.slug);
+    if (!annonce) {
+      return { notFound: true };
+    }
+    // 3. Appeler /annonces/{id} pour les détails
+    const detailRes = await api.get(`/annonces/${annonce.id}`);
+    return {
+      props: { product: detailRes.data },
+    };
+  } catch (error) {
+    return {
+      notFound: true,
+    };
+  }
 }
 
-export async function getStaticPaths() {
-  // get the paths we want to pre render based on products
-  const paths = products.map((product) => ({
-    params: { slug: productSlug(product.title) },
-  }));
-
-  return { paths, fallback: false };
-}

@@ -9,7 +9,7 @@ function ContactUs() {
     <>
       <LayoutOne topbar={true}>
         <ShopBreadCrumb
-          title="Contactez-nous"
+          title="Contact Us"
           sectionPace=""
           currentSlug="Contact"
         />

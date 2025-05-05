@@ -1,14 +1,4 @@
 import Link from "next/link";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addToCart } from "@/store/slices/cart-slice";
-import {
-  addToWishlist,
-  deleteFromWishlist,
-} from "@/store/slices/wishlist-slice";
-import QuickViewtModal from "@/components/modals/quickViewModal";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
 const ProductList = ({
   productData,
   slug,
@@ -19,163 +9,75 @@ const ProductList = ({
   wishlistItem,
   compareItem,
 }) => {
-  // Badge selon la catégorie
-  let badgeText = productData.category === "Location" ? "À louer" : "À vendre";
-  const dispatch = useDispatch();
-  const [modalShow, setModalShow] = useState(false);
+  let badgeText = "";
 
-  const wishListTooltip = (props) => (
-    <Tooltip id="button-tooltip" {...props}>
-      Wishlist
-    </Tooltip>
-  );
-  const quickViewTooltip = (props) => (
-    <Tooltip id="button-tooltip" {...props}>
-      Quick View
-    </Tooltip>
-  );
-  const addToCartTooltip = (props) => (
-    <Tooltip id="button-tooltip" {...props}>
-     Add To Cart
-    </Tooltip>
-  );
+  if (productData.rent) {
+    badgeText = "À louer";
+  } else {
+    badgeText = "À vendre";
+  }
 
   return (
-    <>
-      <div className="ltn__product-item ltn__product-item-4 ltn__product-item-5">
-        <div className="product-img">
-          <Link href={`/${baseUrl}/${slug}`}>
-            <img
-              src={productData.imageUrl || "/img/product-3/default.jpg"}
-              alt={productData.title}
-            />
-          </Link>
-        </div>
-
-        <div className="product-info">
-          <div className="product-badge-price">
-            <div className="product-badge">
-              <ul>
-                <li
-                  className={`sale-badge ${productData.category === "Location" ? "bg-green" : ""}`}
-                >
-                  {badgeText}
-                </li>
-              </ul>
-            </div>
-
-            <div className="product-price">
-              <span>
-                {`${productData.price} FCFA`}
-                <label> {productData.category === "Location" ? "/Mois" : ""}</label>
-              </span>
-            </div>
-          </div>
-
-          <h2 className="product-title">
-            <Link href={`/${baseUrl}/${slug}`}>{productData.title}</Link>
-          </h2>
-
-          <div className="product-img-location">
+    <div className="ltn__product-item ltn__product-item-4 ltn__product-item-5">
+      <div className="product-img">
+        <Link href={`/${baseUrl}/${slug}`}>
+          <img
+            src={`https://picsum.photos/seed/house${Math.floor(Math.random()*1000)}/400/300`}
+            alt="Maison"
+          />
+        </Link>
+      </div>
+      <div className="product-info">
+        <div className="product-badge-price">
+          <div className="product-badge">
             <ul>
-              <li>
-                <Link href={`/${baseUrl}/${slug}`}>
-                  <i className="flaticon-pin"></i>
-                  {productData.location}
-                </Link>
+              <li
+                className={`sale-badge ${productData.rent ? "bg-green" : ""}`}
+              >
+                {badgeText}
               </li>
             </ul>
           </div>
-
-          <ul className="ltn__plot-brief">
+          <div className="product-price">
+            <span>
+              {`${Number(productData.price).toLocaleString('fr-FR')} FCFA`}
+              {productData.rent && <label>/mois</label>}
+            </span>
+          </div>
+        </div>
+        <h2 className="product-title">
+          <Link href={`/${baseUrl}/${slug}`}>{productData.title}</Link>
+        </h2>
+        <div className="product-img-location">
+          <ul>
             <li>
-              <span>N/A</span>
-              <span className="ms-1">Chambres</span>
-            </li>
-            <li>
-              <span>N/A</span>
-              <span className="ms-1">Salles de bain</span>
-            </li>
-            <li>
-              <span>N/A</span>
-              <span className="ms-1">Superficie</span>
+              <i className="flaticon-pin"></i>
+              {productData.location || productData.locantion}
             </li>
           </ul>
         </div>
-        <div className="product-info-bottom">
-          <div className="real-estate-agent">
-            <div className="agent-img">
-              <span style={{ fontWeight: 600 }}>
-                {productData.user && productData.user.name ? productData.user.name : "Agent"}
-              </span>
-            </div>
-          </div>
-
-          <div className="product-hover-action">
-            <ul>
-              <li>
-                <OverlayTrigger
-                  placement="right"
-                  delay={{ show: 250, hide: 400 }}
-                  overlay={quickViewTooltip}
-                >
-                <button onClick={() => setModalShow(true)}>
-                  <i className="flaticon-expand"></i>
-                </button>
-
-
-                </OverlayTrigger>
-              </li>
-              <li>
-
-              <OverlayTrigger
-                  placement="right"
-                  delay={{ show: 250, hide: 400 }}
-                  overlay={wishListTooltip}
-                >
-                <button
-                  onClick={
-                    wishlistItem !== undefined
-                      ? () => dispatch(deleteFromWishlist(productData.id))
-                      : () => dispatch(addToWishlist(productData))
-                  }
-                >
-                  <i className="flaticon-heart-1"></i>
-                </button>
-
-                  
-                </OverlayTrigger>
-              </li>
-              <li>
-              <OverlayTrigger
-                  placement="right"
-                  delay={{ show: 250, hide: 400 }}
-                  overlay={addToCartTooltip}
-                >
-                <button onClick={() => dispatch(addToCart(productData))}>
-                  <i className="flaticon-add"></i>
-                </button>
-
-                  
-                </OverlayTrigger>
-              </li>
-            </ul>
+        {/* <div className="product-owner-info" style={{marginTop:8}}>
+          {productData.user && (
+            <>
+              <div><strong>Propriétaire :</strong> {productData.user.name}</div>
+              <div><strong>Email :</strong> {productData.user.email}</div>
+            </>
+          )}
+        </div> */}
+      </div>
+      <div className="product-info-bottom">
+        <div className="real-estate-agent">
+          <div className="agent-img">
+            <Link href={`/${baseUrl}/${slug}`}>
+              <img
+                src={`/img/blog/author.jpg`}
+                alt={`${productData.title}`}
+              />
+            </Link>
           </div>
         </div>
       </div>
-
-      <QuickViewtModal
-        productData={productData}
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-        slug={slug}
-        discountedprice={discountedPrice}
-        productprice={productPrice}
-        cartitem={cartItem}
-        wishlistitem={wishlistItem}
-        compareitem={compareItem}
-      />
-    </>
+    </div>
   );
 };
 

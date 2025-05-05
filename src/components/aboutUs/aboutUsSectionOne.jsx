@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -10,7 +11,7 @@ function AboutUsSectionOne() {
         <Row>
           <Col xs={12} lg={6} className="align-self-center">
             <div className="about-us-img-wrap about-img-left">
-              <img src="/img/others/11.png" alt="About Us Image" />
+              <Image src="/img/others/11.png" alt="About Us Image" width={500} height={400} />
             </div>
           </Col>
           <Col xs={12} lg={6} className="align-self-center">

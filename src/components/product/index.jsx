@@ -55,9 +55,9 @@ const ProductItem = ({
       <div className="ltn__product-item ltn__product-item-4">
         <div className="product-img">
           <Link href={`/${baseUrl}/${slug}`}>
-            <img
-              src={`/img/product-3/${productData.productImg}`}
-              alt={`${productData.title}`}
+          <img
+              src={`https://picsum.photos/seed/house${Math.floor(Math.random()*1000)}/400/300`}
+              alt="Maison"
             />
           </Link>
           <div className="product-badge">
@@ -75,7 +75,7 @@ const ProductItem = ({
                 <li>
                   <Link href="/locations">
                     <i className="flaticon-pin"></i>
-                    {productData.locantion}
+                    {productData.location}
                   </Link>
                 </li>
               </ul>
@@ -88,7 +88,7 @@ const ProductItem = ({
                     href={`/${baseUrl}/${slug}`}
                   >
                     <FaCamera className="me-2" />
-                    {productData.photo.length}
+                    {productData.photo ? productData.photo.length : 0}
                   </Link>
                 </li>
                 <li>
@@ -97,7 +97,7 @@ const ProductItem = ({
                     href={`/${baseUrl}/${slug}`}
                   >
                     <FaFilm className="me-2" />
-                    {productData.video.length}
+                    {productData.video ? productData.video.length : 0}
                   </Link>
                 </li>
               </ul>
@@ -107,17 +107,17 @@ const ProductItem = ({
         <div className="product-info">
           <div className="product-price">
             <span>
-              {`$ ${productData.price}`}
-              <label>/Month</label>
+            {`${Number(productData.price).toLocaleString('fr-FR')} FCFA`}
+              <label> {productData.category === "Location" ? "/Mois" : ""}</label>
             </span>
           </div>
           <h2 className="product-title">
             <Link href={`/${baseUrl}/${slug}`}>{productData.title}</Link>
           </h2>
-          <div className="product-description">
+          {/* <div className="product-description">
             <p>{productData.fullDescription}</p>
-          </div>
-          <ul className="ltn__list-item-2 ltn__list-item-2-before">
+          </div> */}
+          {/* <ul className="ltn__list-item-2 ltn__list-item-2-before">
             <li>
               <span>
                 {productData.propertyDetails.bedrooms}
@@ -139,26 +139,27 @@ const ProductItem = ({
               </span>
               square Ft
             </li>
-          </ul>
+          </ul> */}
         </div>
         <div className="product-info-bottom">
           <div className="real-estate-agent">
-            <div className="agent-img">
+            {/* <div className="agent-img"> */}
               <Link href="/team-details">
-                <img
-                  src={`/img/blog/${productData.agent.img}`}
-                  alt={`${productData.agent.fullName}`}
-                />
+              {productData.user.name}
+                {/* <img
+                  src={productData.agent && productData.agent.img ? `/img/blog/${productData.agent.img}` : "/img/blog/agent-1.jpg"}
+                  alt={productData.agent && productData.agent.fullName ? productData.agent.fullName : "Agent immobilier"}
+                /> */}
               </Link>
-            </div>
-            <div className="agent-brief">
+            {/* </div> */}
+            {/* <div className="agent-brief">
               <h6>
                 <Link href="/team-details">{productData.agent.firstName}</Link>
               </h6>
               <small>{productData.agent.type}</small>
-            </div>
+            </div> */}
           </div>
-          <div className="product-hover-action">
+          {/* <div className="product-hover-action">
             <ul>
               <li>
               <OverlayTrigger
@@ -202,7 +203,7 @@ const ProductItem = ({
                 </OverlayTrigger>
               </li>
             </ul>
-          </div>
+          </div> */}
         </div>
       </div>
 

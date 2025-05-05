@@ -1,16 +1,16 @@
-import { useState } from "react";
 import ReactSlider from "react-slider";
+import { useState } from "react";
 
 const FilterByPrice = () => {
   const min = 0;
-  const max = 30;
+  const max = 10000000;
 
   const [value, setValue] = useState([min, max]);
 
   return (
     <>
       <div className="price_slider_amount">
-        <span>Selection:</span>
+        {/* <span>Your :</span> */}
         <span>{value[0]}</span>
         <span>-</span>
         <span>{value[1]}</span>

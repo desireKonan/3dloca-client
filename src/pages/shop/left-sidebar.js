@@ -19,12 +19,11 @@ import CallToAction from "@/components/callToAction";
 
 function ShopLeftSideBar() {
   const { products } = useSelector((state) => state.product);
-  const [sortType, setSortType] = useState("");
-  const [sortValue, setSortValue] = useState("");
-  const [filterSortType, setFilterSortType] = useState("");
-  const [filterSortValue, setFilterSortValue] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedLocation, setSelectedLocation] = useState(null);
+  const [priceRange, setPriceRange] = useState({ min: 100000, max: 100000000 });
   const [offset, setOffset] = useState(0);
-  const [sortedProducts, setSortedProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState(products);
   const pageLimit = 6;
   const [currentItems, setCurrentItems] = useState(products);
   const [pageCount, setPageCount] = useState(0);
@@ -32,15 +31,19 @@ function ShopLeftSideBar() {
   const { cartItems } = useSelector((state) => state.cart);
   const { wishlistItems } = useSelector((state) => state.wishlist);
   const { compareItems } = useSelector((state) => state.compare);
-  const getSortParams = (sortType, sortValue) => {
-    setSortType(sortType);
-    setSortValue(sortValue);
+
+  // Fonction appelée par la sidebar à chaque changement de filtre
+  const getSortParams = (type, value) => {
+    if (type === "category") {
+      setSelectedCategory(value);
+    } else if (type === "location") {
+      setSelectedLocation(value);
+    } else if (type === "price") {
+      setPriceRange(value);
+    }
+    setOffset(0); // reset pagination si filtre change
   };
 
-  const getFilterSortParams = (sortType, sortValue) => {
-    setFilterSortType(sortType);
-    setFilterSortValue(sortValue);
-  };
 
   const [query, setQuery] = useState("");
   const keys = ["title"];
@@ -49,39 +52,35 @@ function ShopLeftSideBar() {
       keys.some((key) => item[key].toLowerCase().includes(query))
     );
   };
+  // Filtrage dynamique selon les filtres sélectionnés
   useEffect(() => {
-    let sortedProducts = getSortedProducts(products, sortType, sortValue);
+    let filtered = products;
+    if (selectedCategory) {
+      filtered = filtered.filter(
+        (product) => Array.isArray(product.category)
+          ? product.category.includes(selectedCategory)
+          : product.category === selectedCategory
+      );
+    }
+    if (selectedLocation) {
+      filtered = filtered.filter(
+        (product) => product.location === selectedLocation
+      );
+    }
+    if (priceRange) {
+      filtered = filtered.filter(
+        (product) => product.price >= priceRange.min && product.price <= priceRange.max
+      );
+    }
+    setFilteredProducts(filtered);
+    setCurrentItems(filtered.slice(offset, offset + pageLimit));
+    setPageCount(Math.ceil(filtered.length / pageLimit));
+  }, [products, selectedCategory, selectedLocation, priceRange, offset]);
 
-    const filterSortedProducts = getSortedProducts(
-      sortedProducts,
-      filterSortType,
-      filterSortValue
-    );
-
-    sortedProducts = filterSortedProducts;
-
-    setSortedProducts(sortedProducts);
-
-    setCurrentItems(sortedProducts.slice(offset, offset + pageLimit));
-
-    setCurrentItems(
-      SearchProduct(sortedProducts.slice(offset, offset + pageLimit))
-    );
-  }, [
-    offset,
-    products,
-    sortType,
-    sortValue,
-    filterSortType,
-    filterSortValue,
-    query,
-  ]);
-
+  // Pagination reset si offset change
   useEffect(() => {
-    const endOffset = offset + pageLimit;
-    setCurrentItems(products.slice(offset, endOffset));
-    setPageCount(Math.ceil(products.length / pageLimit));
-  }, [offset, pageLimit]);
+    setCurrentItems(filteredProducts.slice(offset, offset + pageLimit));
+  }, [offset, filteredProducts]);
 
   const handlePageClick = (event) => {
     const newOffset = (event.selected * pageLimit) % products.length;

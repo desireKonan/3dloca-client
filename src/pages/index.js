@@ -19,15 +19,36 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import ModalVideo from "react-modal-video";
 import { useSelector } from "react-redux";
 import Slider from "react-slick";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import api from "@/api";
+import { setProducts } from "@/store/slices/product-slice";
+
 
 function HomeVersionThree(props) {
+  const dispatch = useDispatch();
+  // Récupération des produits via l'API et mise à jour du store Redux
+  useEffect(() => {
+    async function fetchProducts() {
+      try {
+        const res = await api.get("/annonces/validated?page=1&limit=10");
+        if (res.data && res.data.data) {
+console.log(res.data.data);
+
+          dispatch(setProducts(res.data.data));
+        }
+      } catch (error) {
+        console.error("Erreur lors de la récupération des annonces:", error);
+      }
+    }
+    fetchProducts();
+  }, [dispatch]);
   const [isOpen, setOpen] = useState(false);
   const { products } = useSelector((state) => state.product);
   const featureData = getProducts(featuresData, "buying", "featured", 2);
   const countryProducts = getProducts(products, "buying", "country", 5);
-  const featuredProducts = getProducts(products, "buying", "featured", 5);
+  const featuredProducts = products || [];
   const { data, brand, testimonialData } = props;
-
   const { cartItems } = useSelector((state) => state.cart);
   const { wishlistItems } = useSelector((state) => state.wishlist);
   const { compareItems } = useSelector((state) => state.compare);
@@ -233,33 +254,12 @@ function HomeVersionThree(props) {
                 >
                   {featuredProducts.map((product, key) => {
                     const slug = productSlug(product.title);
-
-                    const discountedPrice = getDiscountPrice(
-                      product.price,
-                      product.discount
-                    ).toFixed(2);
-                    const productPrice = product.price.toFixed(2);
-                    const cartItem = cartItems.find(
-                      (cartItem) => cartItem.id === product.id
-                    );
-                    const wishlistItem = wishlistItems.find(
-                      (wishlistItem) => wishlistItem.id === product.id
-                    );
-                    const compareItem = compareItems.find(
-                      (compareItem) => compareItem.id === product.id
-                    );
-
                     return (
                       <ProductItem
                         key={product.id}
                         productData={product}
                         slug={slug}
                         baseUrl="shop"
-                        discountedPrice={discountedPrice}
-                        productPrice={productPrice}
-                        cartItem={cartItem}
-                        wishlistItem={wishlistItem}
-                        compareItem={compareItem}
                       />
                     );
                   })}

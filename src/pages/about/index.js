@@ -1,28 +1,31 @@
-import AboutUsStyleOne from "@/components/aboutUs/aboutUsStyleOne";
-import ShopBreadCrumb from "@/components/breadCrumbs/shop";
-import CallToAction from "@/components/callToAction";
-import Feature from "@/components/features";
-import TeamItem from "@/components/team";
-import TestimonialCarouselItem from "@/components/testimonialCarousel";
-import TitleSection from "@/components/titleSection";
-import featureData from "@/data/service";
-import TeamData from "@/data/team";
-import testimonialData from "@/data/testimonial";
 import { LayoutOne } from "@/layouts";
-import { getProducts, productSlug } from "@/lib/product";
-import { Col, Container, Row } from "react-bootstrap";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { Container, Row, Col } from "react-bootstrap";
+import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import Slider from "react-slick";
+import { getProducts, productSlug } from "@/lib/product";
+import TitleSection from "@/components/titleSection";
+import ShopBreadCrumb from "@/components/breadCrumbs/shop";
+import TestimonialCarouselItem from "@/components/testimonialCarousel";
+import testimonialData from "@/data/testimonial";
+import BlogItem from "@/components/blog";
+import blogData from "@/data/blog";
+import CallToAction from "@/components/callToAction";
+import AboutUsStyleOne from "@/components/aboutUs/aboutUsStyleOne";
+import Feature from "@/components/features";
+import featureData from "@/data/service"
+import TeamItem from "@/components/team";
+import TeamData from '@/data/team';
 
 function AboutUs() {
   const agents = getProducts(TeamData, "buying", "featured", 3);
-  const featureDataSorted = getProducts(featureData, "buying", "featured", 3);
+  const featureDataSorted = getProducts(featureData, "buying", "featured", 2);
 
   const SlickArrowLeft = ({ currentSlide, slideCount, ...props }) => (
     <button
       {...props}
       className={
-        "slick-prev slick-arrow" + (currentSlide === 0 ? " slick-disabled" : "")
+        "slick-prev slick-arrow" +
+        (currentSlide === 0 ? " slick-disabled" : "")
       }
       aria-hidden="true"
       aria-disabled={currentSlide === 0 ? true : false}
@@ -84,74 +87,10 @@ function AboutUs() {
           data={featureDataSorted}
           titleSectionData={{
             sectionClasses: "text-center",
-            subTitle: "Nos Services",
-            title: "Notre Main Focus",
+            subTitle: "Nos services",
+            title: "Nos principaux services",
           }}
         />
-
-        <div className="ltn__team-area pt-115 pb-90">
-          <Container>
-            <Row>
-              <Col lg={12}>
-                <TitleSection
-                  sectionClasses="text-center"
-                  headingClasses="section-subtitle-2"
-                  titleSectionData={{
-                    subTitle: "Equipe",
-                    title: "Agents immobiliers",
-                  }}
-                />
-              </Col>
-            </Row>
-
-            <Row>
-              {agents.map((data, key) => {
-                const slug = productSlug(data.name);
-                return (
-                  <Col key={key} xs={12} sm={6} lg={4}>
-                    <TeamItem
-                      baseUrl="blog"
-                      data={data}
-                      slug={slug}
-                      additionalClassname=""
-                    />
-                  </Col>
-                );
-              })}
-            </Row>
-          </Container>
-        </div>
-
-        {/* <!-- TESTIMONIAL AREA START (testimonial-7) -->  */}
-        <div
-          className="ltn__testimonial-area bg-image-top pt-115 pb-70"
-          style={{ backgroundImage: `url("../img/bg/20.jpg")` }}
-        >
-          <Container>
-            <Row>
-              <Col lg={12}>
-                <TitleSection
-                  sectionClasses="text-center"
-                  headingClasses="section-subtitle-2"
-                  titleSectionData={{
-                    subTitle: "Nos Témoignages",
-                    title: "Clients Feedback",
-                  }}
-                />
-              </Col>
-            </Row>
-
-            <Slider
-              {...testiMonialsettings}
-              className="ltn__testimonial-slider-5-active slick-arrow-1"
-            >
-              {testimonialData.map((data, key) => {
-                return <TestimonialCarouselItem key={key} data={data} />;
-              })}
-            </Slider>
-          </Container>
-        </div>
-        {/* <!-- TESTIMONIAL AREA END --> */}
 
         <div className="ltn__call-to-action-area call-to-action-6 before-bg-bottom">
           <Container>

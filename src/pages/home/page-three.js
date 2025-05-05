@@ -362,7 +362,7 @@ function HomeVersionThree(props) {
 
 
       {/* <!-- BRAND LOGO AREA START --> */}
-      {/* <div className="ltn__brand-logo-area ltn__brand-logo-1 section-bg-1 pt-110 pb-110 plr--9">
+      <div className="ltn__brand-logo-area ltn__brand-logo-1 section-bg-1 pt-110 pb-110 plr--9">
         <Container fluid>
           <Row>
             <Col xs={12}>
@@ -370,7 +370,7 @@ function HomeVersionThree(props) {
             </Col>
           </Row>
         </Container>
-      </div> */}
+      </div>
       {/* <!-- BRAND LOGO AREA END --> */}
 
 

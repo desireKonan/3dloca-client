@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaEnvelope, FaMapMarkerAlt, FaPhone } from 'react-icons/fa';
 
 const HeaderTopInfo = function () {
   return (
@@ -9,13 +9,14 @@ const HeaderTopInfo = function () {
           <li>
             <Link href="mailto:info@webmail.com">
               <FaEnvelope />
-              {/* <i></i> info@webmail.com */}
+              <i></i> info@3dloca.com
             </Link>
           </li>
           <li>
             <Link href="/locations">
-              <FaMapMarkerAlt />
-              15/A, Nest Tower, NYC
+              {/* <FaMapMarkerAlt /> */}
+              <FaPhone />
+              07 88 364 444
             </Link>
           </li>
         </ul>

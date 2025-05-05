@@ -1,8 +1,5 @@
-import QuickViewtModal from "@/components/modals/quickViewModal";
 import Link from "next/link";
-import { useState } from "react";
-import Tooltip from "react-bootstrap/Tooltip";
-import { useDispatch } from "react-redux";
+import { Tooltip } from "react-bootstrap";
 const RelatedProduct = ({
   productData,
   slug,
@@ -16,40 +13,42 @@ const RelatedProduct = ({
   let badgeText = "";
 
   if (productData.rent) {
-    badgeText = "For Rent";
+    badgeText = "À louer";
   } else {
-    badgeText = "For Sale";
+    badgeText = "À vendre";
   }
-  const dispatch = useDispatch();
-  const [modalShow, setModalShow] = useState(false);
+
 
   const wishListTooltip = (props) => (
     <Tooltip id="button-tooltip" {...props}>
-      Wishlist
+      Favoris
     </Tooltip>
   );
   const quickViewTooltip = (props) => (
     <Tooltip id="button-tooltip" {...props}>
-      Quick View
+      Aperçu rapide
     </Tooltip>
   );
   const addToCartTooltip = (props) => (
     <Tooltip id="button-tooltip" {...props}>
-      Add To Cart
+      Ajouter au panier
     </Tooltip>
   );
   return (
     <>
       <div className="ltn__product-item ltn__product-item-4 ltn__product-item-5">
         <div className="product-img">
-          <Link href={`/${baseUrl}/${productData.id}`}>
-            <img src={`/img/product-3/2.jpg`} alt={`${productData.title}`} />
+          <Link href={`/${baseUrl}/${slug}`}>
+            <img
+              src={`https://picsum.photos/seed/house${Math.floor(Math.random()*1000)}/400/300`}
+              alt="Maison"
+            />
           </Link>
           {/* <div className="real-estate-agent">
             <div className="agent-img">
               <Link href={`/${baseUrl}/${slug}`}>
                 <img
-                  src={`/img/blog/author.jpg`}
+                  src={`/img/blog/.jpg`}
                   alt={`${productData.title}`}
                 />
               </Link>
@@ -60,29 +59,31 @@ const RelatedProduct = ({
           <div className="product-badge">
             <ul>
               <li
-                className={`sale-badge ${
-                  productData.category == "Location" ? "bg-green" : ""
-                }`}
+                className={`sale-badge ${productData.rent ? "bg-green" : ""}`}
               >
-                {productData.category}
+                {badgeText}
               </li>
             </ul>
           </div>
           <h2 className="product-title">
-            <Link href={`/${baseUrl}/${productData.id}`}>
-              {productData.title}
-            </Link>
+            <Link href={`/${baseUrl}/${slug}`}>{productData.title}</Link>
           </h2>
           <div className="product-img-location">
             <ul>
               <li>
-                <Link href={`/${baseUrl}/${productData.id}`}>
-                  <i className="flaticon-pin"></i>
-                  {productData.location}
-                </Link>
+                <i className="flaticon-pin"></i>
+                {productData.location || productData.locantion}
               </li>
             </ul>
           </div>
+          {/* <div className="product-owner-info" style={{marginTop:8}}>
+            {productData.user && (
+              <>
+                <div><strong>Propriétaire :</strong> {productData.user.name}</div>
+                <div><strong>Email :</strong> {productData.user.email}</div>
+              </>
+            )}
+          </div> */}
           {/* <ul className="ltn__plot-brief">
             <li>
               <span>{productData.propertyDetails.bedrooms}</span>
@@ -97,74 +98,19 @@ const RelatedProduct = ({
               <span className="ms-1">square Ft</span>
             </li>
           </ul> */}
-          <div className="product-hover-action">
-            <ul>
-              {/* <li>
-                <OverlayTrigger
-                  placement="right"
-                  delay={{ show: 250, hide: 400 }}
-                  overlay={quickViewTooltip}
-                >
-                  <button onClick={() => setModalShow(true)}>
-                    <i className="flaticon-expand"></i>
-                  </button>
-                </OverlayTrigger>
-              </li> */}
-              {/* <li>
-                <OverlayTrigger
-                  placement="right"
-                  delay={{ show: 250, hide: 400 }}
-                  overlay={wishListTooltip}
-                >
-                  <button
-                    onClick={
-                      wishlistItem !== undefined
-                        ? () => dispatch(deleteFromWishlist(productData.id))
-                        : () => dispatch(addToWishlist(productData))
-                    }
-                  >
-                    <i className="flaticon-heart-1"></i>
-                  </button>
-                </OverlayTrigger>
-              </li> */}
-              {/* <li>
-                <OverlayTrigger
-                  placement="right"
-                  delay={{ show: 250, hide: 400 }}
-                  overlay={addToCartTooltip}
-                >
-                  <button onClick={() => dispatch(addToCart(productData))}>
-                    <i className="flaticon-add"></i>
-                  </button>
-                </OverlayTrigger>
-              </li> */}
-            </ul>
-          </div>
+          
         </div>
         <div className="product-info-bottom">
           <div className="product-price">
             <span>
-              {`${productData.price} FCFA`}
-              <label>
-                {" "}
-                {productData.category == "Location" ? "/Mois" : ""}
-              </label>
+              {`${Number(productData.price).toLocaleString('fr-FR')} FCFA`}
+              {productData.category === "Location" ? <label>/mois</label> : <label></label>}
             </span>
           </div>
         </div>
       </div>
 
-      <QuickViewtModal
-        productData={productData}
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-        slug={slug}
-        discountedprice={discountedPrice}
-        productprice={productPrice}
-        cartitem={cartItem}
-        wishlistitem={wishlistItem}
-        compareitem={compareItem}
-      />
+
     </>
   );
 };

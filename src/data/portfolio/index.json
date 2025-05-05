@@ -1,13 +1,13 @@
 [
   {
-    "title": "Buy a home",
-    "designation": "Web Design & Development, Branding",
-    "shortDescription": "over 1 million+ homes for sale available on the website, we can match you with a house you will want to call home.",
+    "title": "Acheter une maison",
+    "designation": "Conception et d veloppement web, branding",
+    "shortDescription": "Plus de 1 million de maisons vendues disponibles sur le site, nous pouvons vous trouver une maison que vous aimerez.",
     "fullDescription": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione.",
     "captions": {
       "image1": "31.jpg",
       "image2": "32.jpg",
-      "caption": "Image caption here.",
+      "caption": "L gende de l'image",
       "captionFullDescription": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione.",
       "captionShortDescription": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident."
     },
@@ -17,14 +17,14 @@
     "carousel": false,
     "active": false,
     "category": ["buying", "rent"],
-    "filter":"Houses",
+    "filter":"Maisons",
     "featured": true,
     "reviews": [
       {
         "author": {
           "productImage": "7.jpg",
           "name": "Jacob William",
-          "designation": "Founder, Browni Co.",
+          "designation": "Fondateur, Browni Co.",
           "img": "1.jpg",
           "description": "Lorem ipsum dolor sit amet, conse ctetur adipisicing elit, sed do eius mod tempor incididunt ut labore et dolore magna aliqua."
         }
@@ -33,48 +33,7 @@
         "author": {
           "productImage": "7.jpg",
           "name": "Jacob William",
-          "designation": "Founder, Browni Co.",
-          "img": "1.jpg",
-          "description": "Lorem ipsum dolor sit amet, conse ctetur adipisicing elit, sed do eius mod tempor incididunt ut labore et dolore magna aliqua."
-        }
-      }
-    ]
-  },
-  {
-    "title": "Rent a home",
-    "designation": "Web Design & Development, Branding",
-    "shortDescription": "over 1 million+ homes for sale available on the website, we can match you with a house you will want to call home.",
-    "fullDescription": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione.",
-    "captions": {
-      "image1": "31.jpg",
-      "image2": "32.jpg",
-      "caption": "Image caption here.",
-      "captionFullDescription": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione.",
-      "captionShortDescription": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident."
-    },
-    "thumbImage": "2.jpg",
-    "img": "2.jpg",
-    "id": "02",
-    "carousel": false,
-    "active": true,
-    "category": ["buying", "rent"],
-    "filter":"Retail",
-    "featured": true,
-    "reviews": [
-      {
-        "author": {
-          "productImage": "7.jpg",
-          "name": "Jacob William",
-          "designation": "Founder, Browni Co.",
-          "img": "1.jpg",
-          "description": "Lorem ipsum dolor sit amet, conse ctetur adipisicing elit, sed do eius mod tempor incididunt ut labore et dolore magna aliqua."
-        }
-      },
-      {
-        "author": {
-          "productImage": "7.jpg",
-          "name": "Jacob William",
-          "designation": "Founder, Browni Co.",
+          "designation": "Fondateur, Browni Co.",
           "img": "1.jpg",
           "description": "Lorem ipsum dolor sit amet, conse ctetur adipisicing elit, sed do eius mod tempor incididunt ut labore et dolore magna aliqua."
         }

@@ -1,11 +1,7 @@
 import slugify from "slugify";
 // get products
 export const getProducts = (products, category, type, limit) => {
-  const finalProducts = category
-    ? products.filter(
-      (product) => product.category.filter((single) => single === category)[0]
-    )
-    : products;
+  const finalProducts = products;
 
   if (type && type === "featured") {
     const featuredProducts = finalProducts.filter((single) => single.featured);
@@ -33,37 +29,37 @@ export const getProducts = (products, category, type, limit) => {
     const newProducts = finalProducts.filter((single) => single.new);
     return newProducts.slice(0, limit ? limit : newProducts.length);
   }
-  if (type && type === "popular") {
-    return (
-      finalProducts &&
-      finalProducts
-        .sort((a, b) => {
-          return b.saleCount - a.saleCount;
-        })
-        .slice(0, limit ? limit : finalProducts.length)
-    );
-  }
+  // if (type && type === "popular") {
+  //   return (
+  //     finalProducts &&
+  //     finalProducts
+  //       .sort((a, b) => {
+  //         return b.saleCount - a.saleCount;
+  //       })
+  //       .slice(0, limit ? limit : finalProducts.length)
+  //   );
+  // }
 
-  if (type && type === "country") {
-    return (
-      finalProducts &&
-      finalProducts
-        .sort((a, b) => {
-          return b.saleCount - a.saleCount;
-        })
-        .slice(0, limit ? limit : finalProducts.length)
-    );
-  }
-  if (type && type === "topRated") {
-    return (
-      finalProducts &&
-      finalProducts
-        .sort((a, b) => {
-          return b.rating - a.rating;
-        })
-        .slice(0, limit ? limit : finalProducts.length)
-    );
-  }
+  // if (type && type === "country") {
+  //   return (
+  //     finalProducts &&
+  //     finalProducts
+  //       .sort((a, b) => {
+  //         return b.saleCount - a.saleCount;
+  //       })
+  //       .slice(0, limit ? limit : finalProducts.length)
+  //   );
+  // }
+  // if (type && type === "topRated") {
+  //   return (
+  //     finalProducts &&
+  //     finalProducts
+  //       .sort((a, b) => {
+  //         return b.rating - a.rating;
+  //       })
+  //       .slice(0, limit ? limit : finalProducts.length)
+  //   );
+  // }
   if (type && type === "sale") {
     const saleItems =
       finalProducts &&

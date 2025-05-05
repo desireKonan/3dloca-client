@@ -1,12 +1,13 @@
-import MenuList from "@/components/header/elements/menuList";
-import clsx from "clsx";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
+import HeaderTopBarTwo from "./headerTopBar/headerTopBarStyleTwo";
 import HeaderCartMenu from "./elements/headerCartMenu";
 import MobileMenu from "./elements/mobileMennu";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import clsx from "clsx";
+import MenuList from "@/components/header/elements/menuList";
 const HeaderStyleTwo = function ({ SetToggleClassName, topbar }) {
   const [cartMenuOpener, cartMenuOpenerSet] = useState(false);
   const [overlayBtn, SetoverlayBtn] = useState(false);
@@ -56,7 +57,7 @@ const HeaderStyleTwo = function ({ SetToggleClassName, topbar }) {
     <>
       <header className="ltn__header-area ltn__header-5 ltn__header-logo-and-mobile-menu-in-mobile ltn__header-logo-and-mobile-menu ltn__header-transparent">
         {/* <!-- ltn__header-top-area start --> */}
-        {/* {topbar ? <HeaderTopBarTwo /> : null} */}
+        {topbar ? <HeaderTopBarTwo /> : null}
 
         {/* <!-- ltn__header-top-area end --> */}
 
@@ -73,7 +74,8 @@ const HeaderStyleTwo = function ({ SetToggleClassName, topbar }) {
                 <div className="site-logo-wrap">
                   <div className="site-logo">
                     <Link href="/">
-                      <img src="/img/logo-2.png" alt="Logo" />
+                      {/* <img src="/img/logo-2.png" alt="Logo" /> */}
+                      <h1 className="text-white">3D Loca</h1>
                     </Link>
                   </div>
                 </div>
