@@ -19,13 +19,8 @@ const ProductList = ({
   wishlistItem,
   compareItem,
 }) => {
-  let badgeText = "";
-
-  if (productData.rent) {
-    badgeText = "For Rent";
-  } else {
-    badgeText = "For Sale";
-  }
+  // Badge selon la catégorie
+  let badgeText = productData.category === "Location" ? "À louer" : "À vendre";
   const dispatch = useDispatch();
   const [modalShow, setModalShow] = useState(false);
 
@@ -44,14 +39,15 @@ const ProductList = ({
      Add To Cart
     </Tooltip>
   );
+
   return (
     <>
       <div className="ltn__product-item ltn__product-item-4 ltn__product-item-5">
         <div className="product-img">
           <Link href={`/${baseUrl}/${slug}`}>
             <img
-              src={`/img/product-3/${productData.productImg}`}
-              alt={`${productData.title}`}
+              src={productData.imageUrl || "/img/product-3/default.jpg"}
+              alt={productData.title}
             />
           </Link>
         </div>
@@ -61,7 +57,7 @@ const ProductList = ({
             <div className="product-badge">
               <ul>
                 <li
-                  className={`sale-badge ${productData.rent ? "bg-green" : ""}`}
+                  className={`sale-badge ${productData.category === "Location" ? "bg-green" : ""}`}
                 >
                   {badgeText}
                 </li>
@@ -70,8 +66,8 @@ const ProductList = ({
 
             <div className="product-price">
               <span>
-                {`$ ${productData.price}`}
-                <label>/Month</label>
+                {`${productData.price} FCFA`}
+                <label> {productData.category === "Location" ? "/Mois" : ""}</label>
               </span>
             </div>
           </div>
@@ -85,7 +81,7 @@ const ProductList = ({
               <li>
                 <Link href={`/${baseUrl}/${slug}`}>
                   <i className="flaticon-pin"></i>
-                  {productData.locantion}
+                  {productData.location}
                 </Link>
               </li>
             </ul>
@@ -93,35 +89,32 @@ const ProductList = ({
 
           <ul className="ltn__plot-brief">
             <li>
-              <span>{productData.propertyDetails.bedrooms}</span>
-              <span className="ms-1">Bedrooms</span>
+              <span>N/A</span>
+              <span className="ms-1">Chambres</span>
             </li>
             <li>
-              <span>{productData.propertyDetails.baths}</span>
-              <span className="ms-1">Bathrooms</span>
+              <span>N/A</span>
+              <span className="ms-1">Salles de bain</span>
             </li>
             <li>
-              <span>{productData.propertyDetails.area}</span>
-              <span className="ms-1">square Ft</span>
+              <span>N/A</span>
+              <span className="ms-1">Superficie</span>
             </li>
           </ul>
         </div>
         <div className="product-info-bottom">
           <div className="real-estate-agent">
             <div className="agent-img">
-              <Link href={`/${baseUrl}/${slug}`}>
-                <img
-                  src={`/img/blog/author.jpg`}
-                  alt={`${productData.title}`}
-                />
-              </Link>
+              <span style={{ fontWeight: 600 }}>
+                {productData.user && productData.user.name ? productData.user.name : "Agent"}
+              </span>
             </div>
           </div>
 
           <div className="product-hover-action">
             <ul>
               <li>
-              <OverlayTrigger
+                <OverlayTrigger
                   placement="right"
                   delay={{ show: 250, hide: 400 }}
                   overlay={quickViewTooltip}

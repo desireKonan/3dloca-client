@@ -1,19 +1,28 @@
-import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import api from "@/api";
 import ShopBreadCrumb from "@/components/breadCrumbs/shop";
-import { getSortedProducts, productSlug, getDiscountPrice } from "@/lib/product";
-import { LayoutOne } from "@/layouts";
-import { FaThLarge, FaThList, FaAngleDoubleLeft, FaAngleDoubleRight } from "react-icons/fa";
-import { Container, Row, Col, Nav, Tab, Form } from "react-bootstrap";
-import SideBar from "@/components/shopSideBar";
-import RelatedProduct from "@/components/product/related-product";
-import ProductList from "@/components/product/list";
-import Search from "@/components/search";
 import CallToAction from "@/components/callToAction";
+import ProductList from "@/components/product/list";
+import RelatedProduct from "@/components/product/related-product";
+import SideBar from "@/components/shopSideBar";
+import { LayoutOne } from "@/layouts";
+import {
+  getDiscountPrice,
+  getSortedProducts,
+  productSlug,
+} from "@/lib/product";
+import { setProducts } from "@/store/slices/product-slice";
+import { useEffect, useState } from "react";
+import { Col, Container, Form, Nav, Row, Tab } from "react-bootstrap";
+import {
+  FaAngleDoubleLeft,
+  FaAngleDoubleRight,
+  FaThLarge,
+  FaThList,
+} from "react-icons/fa";
 import ReactPaginate from "react-paginate";
+import { useDispatch, useSelector } from "react-redux";
 
-
-function Shop() {
+function ShopLeftSideBar() {
   const { products } = useSelector((state) => state.product);
   const [sortType, setSortType] = useState("");
   const [sortValue, setSortValue] = useState("");
@@ -21,14 +30,13 @@ function Shop() {
   const [filterSortValue, setFilterSortValue] = useState("");
   const [offset, setOffset] = useState(0);
   const [sortedProducts, setSortedProducts] = useState([]);
+  const pageLimit = 6;
+  const [currentItems, setCurrentItems] = useState(products);
+  const [pageCount, setPageCount] = useState(0);
 
   const { cartItems } = useSelector((state) => state.cart);
   const { wishlistItems } = useSelector((state) => state.wishlist);
   const { compareItems } = useSelector((state) => state.compare);
-
-  const pageLimit = 6;
-  const [currentItems, setCurrentItems] = useState(products);
-  const [pageCount, setPageCount] = useState(0);
   const getSortParams = (sortType, sortValue) => {
     setSortType(sortType);
     setSortValue(sortValue);
@@ -74,30 +82,46 @@ function Shop() {
     query,
   ]);
 
+  // Récupération des produits via l'API et mise à jour du store Redux
+  const dispatch = useDispatch();
+  useEffect(() => {
+    async function fetchProducts() {
+      try {
+        const res = await api.get("/annonces/validated?page=1&limit=10");
+        if (res.data && res.data.data) {
+          console.log("récupération des annonces:", res.data.data);
+          dispatch(setProducts(res.data.data));
+        }
+      } catch (error) {
+        console.error("Erreur lors de la récupération des annonces:", error);
+      }
+    }
+    fetchProducts();
+  }, [dispatch]);
+
   useEffect(() => {
     const endOffset = offset + pageLimit;
     setCurrentItems(products.slice(offset, endOffset));
     setPageCount(Math.ceil(products.length / pageLimit));
-  }, [offset, pageLimit]);
+  }, [products, offset, pageLimit]);
 
   const handlePageClick = (event) => {
     const newOffset = (event.selected * pageLimit) % products.length;
     setOffset(newOffset);
   };
 
-
   return (
     <LayoutOne topbar={true}>
       {/* <!-- BREADCRUMB AREA START --> */}
 
-      <ShopBreadCrumb title="Property" sectionPace="" currentSlug="Property" />
+      <ShopBreadCrumb title="Biens" sectionPace="" currentSlug="Biens" />
       {/* <!-- BREADCRUMB AREA END -->
     
     <!-- PRODUCT DETAILS AREA START --> */}
       <div className="ltn__product-area ltn__product-gutter mb-120">
         <Container>
           <Row>
-            <Col xs={12} lg={8}>
+            <Col xs={12} lg={{ span: 8, order: 1 }}>
               <Tab.Container defaultActiveKey="first">
                 <div className="ltn__shop-options">
                   <ul className="justify-content-between">
@@ -119,20 +143,23 @@ function Shop() {
                         <Form.Select
                           className="form-control nice-select"
                           onChange={(e) =>
-
                             getFilterSortParams("filterSort", e.target.value)
                           }
                         >
                           <option value="default">Default</option>
-                          <option value="priceHighToLow">Price - High to Low</option>
-                          <option value="priceLowToHigh">Price - Low to High</option>
+                          <option value="priceHighToLow">
+                            Prix - Haut à Bas
+                          </option>
+                          <option value="priceLowToHigh">
+                            Prix - Bas à Haut
+                          </option>
                         </Form.Select>
                       </div>
                     </li>
                   </ul>
                 </div>
 
-                <Search spaceBottom="mb-30" setQuery={setQuery} />
+                {/* <Search spaceBottom="mb-30" setQuery={setQuery} /> */}
 
                 <Tab.Content>
                   <Tab.Pane eventKey="first">
@@ -159,7 +186,8 @@ function Shop() {
                               <RelatedProduct
                                 slug={slug}
                                 baseUrl="shop"
-                                productData={product} discountedPrice={discountedPrice}
+                                productData={product}
+                                discountedPrice={discountedPrice}
                                 productPrice={productPrice}
                                 cartItem={cartItem}
                                 wishlistItem={wishlistItem}
@@ -192,11 +220,16 @@ function Shop() {
                           );
                           return (
                             <Col key={key} xs={12}>
-                              <ProductList slug={slug} baseUrl="shop" productData={product} discountedPrice={discountedPrice}
+                              <ProductList
+                                slug={slug}
+                                baseUrl="shop"
+                                productData={product}
+                                discountedPrice={discountedPrice}
                                 productPrice={productPrice}
                                 cartItem={cartItem}
                                 wishlistItem={wishlistItem}
-                                compareItem={compareItem} />
+                                compareItem={compareItem}
+                              />
                             </Col>
                           );
                         })}
@@ -229,7 +262,7 @@ function Shop() {
                 />
               </div>
             </Col>
-            <Col xs={12} lg={4}>
+            <Col xs={12} lg={{ span: 4, order: 0 }}>
               <SideBar products={products} getSortParams={getSortParams} />
             </Col>
           </Row>
@@ -252,4 +285,4 @@ function Shop() {
   );
 }
 
-export default Shop;
+export default ShopLeftSideBar;

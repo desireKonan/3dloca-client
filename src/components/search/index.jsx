@@ -7,7 +7,7 @@ const Search = ({ spaceBottom, setQuery }) => {
           onChange={(e) => setQuery(e.target.value.toLowerCase())}
           type="text"
           name="search"
-          placeholder="Search your keyword..."
+          placeholder="Rechercher..."
         />
         <button type="submit">
           <FaSearch />

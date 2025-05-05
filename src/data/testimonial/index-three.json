@@ -1,30 +1,30 @@
 [
   {
-    "id": "5",
-    "name": "Jacob William",
-    "type": "Manager",
-    "img": "1.jpg",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud  ullamco laboris nisi ut aliquip ex ea commodo."
+    "id": "1",
+    "name": "Sophie Martin",
+    "type": "Propriétaire",
+    "img": "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
+    "description": "J'ai été impressionnée par le professionnalisme de l'équipe 3D Loca. Ils ont su trouver exactement le type de bien que je recherchais. Le processus de location a été simple et transparent."
   },
   {
     "id": "2",
-    "name": "Ethan James",
-    "type": "Admin",
-    "img": "2.jpg",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud  ullamco laboris nisi ut aliquip ex ea commodo."
+    "name": "Thomas Dubois",
+    "type": "Investisseur",
+    "img": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d",
+    "description": "En tant qu'investisseur immobilier, je suis ravi de la collaboration avec 3D Loca. Leur expertise du marché local et leur approche personnalisée ont été déterminantes dans mes choix d'investissement."
   },
   {
     "id": "3",
-    "name": "Noah Alexander",
-    "type": "Professor",
-    "img": "3.jpg",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud  ullamco laboris nisi ut aliquip ex ea commodo."
+    "name": "Marie Petit",
+    "type": "Locataire",
+    "img": "https://images.unsplash.com/photo-1534528741775-53994a69daeb",
+    "description": "3D Loca m'a aidée à trouver l'appartement parfait. Leur équipe a été très réactive et à l'écoute de mes besoins. Je recommande vivement leurs services."
   },
   {
     "id": "4",
-    "name": "Liam Mason",
-    "type": "Officer",
-    "img": "4.jpg",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud  ullamco laboris nisi ut aliquip ex ea commodo."
+    "name": "Lucas Bernard",
+    "type": "Propriétaire",
+    "img": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e",
+    "description": "La gestion de mon bien par 3D Loca est impeccable. Ils s'occupent de tout avec professionnalisme et je peux leur faire entièrement confiance. Un vrai partenaire de confiance."
   }
 ]

@@ -1,16 +1,16 @@
 import Link from "next/link";
+import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import {
-  FaFacebookF,
-  FaTwitter,
-  FaLinkedin,
-  FaYoutube,
-  FaPaperPlane,
   FaEnvelope,
+  FaFacebookF,
+  FaLinkedin,
   FaMapMarkerAlt,
+  FaPaperPlane,
   FaPhoneAlt,
+  FaTwitter,
+  FaYoutube,
 } from "react-icons/fa";
 
 const Footer = function () {
@@ -21,7 +21,7 @@ const Footer = function () {
         <div className="footer-top-area  section-bg-2 plr--5">
           <Container fluid>
             <Row>
-              <Col xs={12} sm={6} xl={3}>
+              <Col xs={12} sm={6} xl={4}>
                 <div className="footer-widget footer-about-widget">
                   <div className="footer-logo">
                     <div className="site-logo">
@@ -30,8 +30,9 @@ const Footer = function () {
                     </div>
                   </div>
                   <p>
-                    Lorem Ipsum is simply dummy text of the and typesetting
-                    industry. Lorem Ipsum is dummy text of the printing.
+                    3D Loca est une plateforme de location de biens immobiliers
+                    en 3D. Nous vous proposons une sélection de biens
+                    immobiliers avec visite 3D virtuelle .
                   </p>
                   <div className="footer-address">
                     <ul>
@@ -40,7 +41,7 @@ const Footer = function () {
                           <FaMapMarkerAlt />
                         </div>
                         <div className="footer-address-info">
-                          <p>Brooklyn, New York, United States</p>
+                          <p>Abidjan, Côte d&apos;Ivoire</p>
                         </div>
                       </li>
                       <li>
@@ -49,7 +50,7 @@ const Footer = function () {
                         </div>
                         <div className="footer-address-info">
                           <p>
-                            <Link href="tel:+0123-456789">+0123-456789</Link>
+                            <Link href="tel:+22601234567">+225 0123 4567</Link>
                           </p>
                         </div>
                       </li>
@@ -95,26 +96,17 @@ const Footer = function () {
               </Col>
               <Col xs={12} sm={6} xl={2}>
                 <div className="footer-widget footer-menu-widget clearfix">
-                  <h4 className="footer-title">Company</h4>
+                  <h4 className="footer-title">Entreprise</h4>
                   <div className="footer-menu">
                     <ul>
                       <li>
-                        <Link href="/about">About</Link>
+                        <Link href="/about">A propos</Link>
                       </li>
                       <li>
-                        <Link href="/blog">Blog</Link>
+                        <Link href="/shop">Biens</Link>
                       </li>
                       <li>
-                        <Link href="/shop">All Products</Link>
-                      </li>
-                      <li>
-                        <Link href="/locations">Locations Map</Link>
-                      </li>
-                      <li>
-                        <Link href="/faq">FAQ</Link>
-                      </li>
-                      <li>
-                        <Link href="/contact">Contact us</Link>
+                        <Link href="/contact">Contactez-nous</Link>
                       </li>
                     </ul>
                   </div>
@@ -126,64 +118,33 @@ const Footer = function () {
                   <div className="footer-menu">
                     <ul>
                       <li>
-                        <Link href="/order-tracking">Order tracking</Link>
+                        <Link href="/my-account">Mon espace</Link>
                       </li>
                       <li>
-                        <Link href="/wishlist">Wish List</Link>
+                        <Link href="/register">Déposer un bien</Link>
                       </li>
                       <li>
-                        <Link href="/login">Login</Link>
-                      </li>
-                      <li>
-                        <Link href="/my-account">My account</Link>
-                      </li>
-                      <li>
-                        <Link href="/about">Terms & Conditions</Link>
-                      </li>
-                      <li>
-                        <Link href="/about">Promotional Offers</Link>
+                        <Link href="/about">Conditions générales</Link>
                       </li>
                     </ul>
                   </div>
                 </div>
               </Col>
-              <Col xs={12} sm={6} xl={2}>
-                <div className="footer-widget footer-menu-widget clearfix">
-                  <h4 className="footer-title">Customer Care</h4>
-                  <div className="footer-menu">
-                    <ul>
-                      <li>
-                        <Link href="/login">Login</Link>
-                      </li>
-                      <li>
-                        <Link href="/my-account">My account</Link>
-                      </li>
-                      <li>
-                        <Link href="/wishlist">Wish List</Link>
-                      </li>
-                      <li>
-                        <Link href="/order-tracking">Order tracking</Link>
-                      </li>
-                      <li>
-                        <Link href="/faq">FAQ</Link>
-                      </li>
-                      <li>
-                        <Link href="/contact">Contact us</Link>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </Col>
+
               <Col xs={12} sm={6} xl={3}>
                 <div className="footer-widget footer-newsletter-widget">
                   <h4 className="footer-title">Newsletter</h4>
                   <p>
-                    Subscribe to our weekly Newsletter and receive updates via
-                    email.
+                    Inscrivez-vous à notre newsletter hebdomadaire et recevez
+                    des mises à jour par e-mail.
                   </p>
                   <div className="footer-newsletter">
                     <form action="#">
-                      <input type="email" name="email" placeholder="Email*" />
+                      <input
+                        type="email"
+                        name="email"
+                        placeholder="Adresse e-mail*"
+                      />
                       <div className="btn-wrapper">
                         <button className="theme-btn-1 btn" type="submit">
                           {" "}
@@ -192,8 +153,6 @@ const Footer = function () {
                       </div>
                     </form>
                   </div>
-                  <h5 className="mt-30">We Accept</h5>
-                  <img src="/img/icons/payment-4.png" alt="Payment Image" />
                 </div>
               </Col>
             </Row>
@@ -205,7 +164,7 @@ const Footer = function () {
               <Col xs={12} md={6}>
                 <div className="ltn__copyright-design clearfix">
                   <p>
-                    All Rights Reserved @ Company{" "}
+                    Tous droits réservés @ 3D Loca{" "}
                     <span className="current-year"></span>
                   </p>
                 </div>
@@ -214,13 +173,10 @@ const Footer = function () {
                 <div className="ltn__copyright-menu text-end">
                   <ul>
                     <li>
-                      <Link href="#">Terms & Conditions</Link>
+                      <Link href="#">Conditions d&apos;utilisation</Link>
                     </li>
                     <li>
-                      <Link href="#">Claim</Link>
-                    </li>
-                    <li>
-                      <Link href="#">Privacy & Policy</Link>
+                      <Link href="#">Politique de confidentialité</Link>
                     </li>
                   </ul>
                 </div>

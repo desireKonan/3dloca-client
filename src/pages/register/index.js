@@ -1,16 +1,5 @@
-import { useState } from "react";
 import { LayoutOne } from "@/layouts";
-import { Container, Row, Col } from "react-bootstrap";
-import {
-  FaArrowRight,
-  FaArrowLeft,
-  FaPlay,
-  FaSearch,
-  FaRegEnvelopeOpen,
-  FaPhoneAlt,
-} from "react-icons/fa";
-
-import ShopBreadCrumb from "@/components/breadCrumbs/shop";
+import { Col, Container, Row } from "react-bootstrap";
 
 import CallToAction from "@/components/callToAction";
 import Link from "next/link";
@@ -19,7 +8,11 @@ function Register() {
   return (
     <>
       <LayoutOne topbar={true}>
-        <ShopBreadCrumb title="Account" sectionPace="" currentSlug="Register" />
+        {/* <ShopBreadCrumb
+          title="Inscription"
+          sectionPace=""
+          currentSlug="Register"
+        /> */}
 
         {/* <!-- LOGIN AREA START (Register) --> */}
         <div className="ltn__login-area pb-110">
@@ -28,13 +21,12 @@ function Register() {
               <Col xs={12}>
                 <div className="section-title-area text-center">
                   <h1 className="section-title">
-                    Register <br />
-                    Your Account
+                    Inscrivez-vous <br />
+                    {/* Votre Compte */}
                   </h1>
                   <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.{" "}
-                    <br />
-                    Sit aliquid, Non distinctio vel iste.
+                    Inscrivez-vous pour profiter de nos offres personnalisées et
+                    rester informé de nos dernières actualités.
                   </p>
                 </div>
               </Col>
@@ -43,57 +35,54 @@ function Register() {
               <Col xs={12} lg={{ span: 6, offset: 3 }}>
                 <div className="account-login-inner">
                   <form action="#" className="ltn__form-box contact-form-box">
+                    <input type="text" name="firstname" placeholder="Nom" />
+                    <input type="text" name="lastname" placeholder="Prénom" />
                     <input
                       type="text"
-                      name="firstname"
-                      placeholder="First Name"
+                      name="email"
+                      placeholder="Adresse e-mail*"
                     />
-                    <input
-                      type="text"
-                      name="lastname"
-                      placeholder="Last Name"
-                    />
-                    <input type="text" name="email" placeholder="Email*" />
                     <input
                       type="password"
                       name="password"
-                      placeholder="Password*"
+                      placeholder="Mot de passe*"
                     />
                     <input
                       type="password"
                       name="confirmpassword"
-                      placeholder="Confirm Password*"
+                      placeholder="Confirmez le mot de passe*"
                     />
                     <label className="checkbox-inline">
-                      <input type="checkbox" value="" />I consent to Herboil
-                      processing my personal data in order to send personalized
-                      marketing material in accordance with the consent form and
-                      the privacy policy.
+                      <input type="checkbox" value="" />
+                      Je consens au traitement de mes données personnelles par
+                      Herboil pour envoyer du matériel de marketing personnalisé
+                      conformément au formulaire de consentement et à la
+                      politique de confidentialité.
                     </label>
                     <label className="checkbox-inline">
                       <input type="checkbox" value="" />
-                      By clicking create account, I consent to the privacy
-                      policy.
+                      En cliquant sur Créer un compte, je consens à la politique
+                      de confidentialité.
                     </label>
                     <div className="btn-wrapper">
                       <button
                         className="theme-btn-1 btn reverse-color btn-block"
                         type="submit"
                       >
-                        CREATE ACCOUNT
+                        CRÉER UN COMPTE
                       </button>
                     </div>
                   </form>
                   <div className="by-agree text-center">
-                    <p>By creating an account, you agree to our:</p>
+                    <p>En créant un compte, vous acceptez nos:</p>
                     <p>
-                      <Link href="#">
-                        TERMS OF CONDITIONS &nbsp; &nbsp; | &nbsp; &nbsp;
-                        PRIVACY POLICY
+                      <Link href="/terms">
+                        CONDITIONS D&apos;UTILISATION &nbsp; &nbsp; | &nbsp;
+                        &nbsp; POLITIQUE DE CONFIDENTIALITÉ
                       </Link>
                     </p>
                     <div className="go-to-btn mt-50">
-                      <Link href="/login">ALREADY HAVE AN ACCOUNT ?</Link>
+                      <Link href="/login">DEJA UN COMPTE ?</Link>
                     </div>
                   </div>
                 </div>

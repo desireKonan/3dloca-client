@@ -1,14 +1,8 @@
-import Link from "next/link";
-import { useDispatch } from "react-redux";
-import { addToCart } from "@/store/slices/cart-slice";
-import { useState } from "react";
-import {
-  addToWishlist,
-  deleteFromWishlist,
-} from "@/store/slices/wishlist-slice";
 import QuickViewtModal from "@/components/modals/quickViewModal";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Link from "next/link";
+import { useState } from "react";
 import Tooltip from "react-bootstrap/Tooltip";
+import { useDispatch } from "react-redux";
 const RelatedProduct = ({
   productData,
   slug,
@@ -48,13 +42,10 @@ const RelatedProduct = ({
     <>
       <div className="ltn__product-item ltn__product-item-4 ltn__product-item-5">
         <div className="product-img">
-          <Link href={`/${baseUrl}/${slug}`}>
-            <img
-              src={`/img/product-3/${productData.productImg}`}
-              alt={`${productData.title}`}
-            />
+          <Link href={`/${baseUrl}/${productData.id}`}>
+            <img src={`/img/product-3/2.jpg`} alt={`${productData.title}`} />
           </Link>
-          <div className="real-estate-agent">
+          {/* <div className="real-estate-agent">
             <div className="agent-img">
               <Link href={`/${baseUrl}/${slug}`}>
                 <img
@@ -63,32 +54,36 @@ const RelatedProduct = ({
                 />
               </Link>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="product-info">
           <div className="product-badge">
             <ul>
               <li
-                className={`sale-badge ${productData.rent ? "bg-green" : ""}`}
+                className={`sale-badge ${
+                  productData.category == "Location" ? "bg-green" : ""
+                }`}
               >
-                {badgeText}
+                {productData.category}
               </li>
             </ul>
           </div>
           <h2 className="product-title">
-            <Link href={`/${baseUrl}/${slug}`}>{productData.title}</Link>
+            <Link href={`/${baseUrl}/${productData.id}`}>
+              {productData.title}
+            </Link>
           </h2>
           <div className="product-img-location">
             <ul>
               <li>
-                <Link href={`/${baseUrl}/${slug}`}>
+                <Link href={`/${baseUrl}/${productData.id}`}>
                   <i className="flaticon-pin"></i>
-                  {productData.locantion}
+                  {productData.location}
                 </Link>
               </li>
             </ul>
           </div>
-          <ul className="ltn__plot-brief">
+          {/* <ul className="ltn__plot-brief">
             <li>
               <span>{productData.propertyDetails.bedrooms}</span>
               <span className="ms-1">Bedrooms</span>
@@ -101,10 +96,10 @@ const RelatedProduct = ({
               <span>{productData.propertyDetails.area}</span>
               <span className="ms-1">square Ft</span>
             </li>
-          </ul>
+          </ul> */}
           <div className="product-hover-action">
             <ul>
-              <li>
+              {/* <li>
                 <OverlayTrigger
                   placement="right"
                   delay={{ show: 250, hide: 400 }}
@@ -114,8 +109,8 @@ const RelatedProduct = ({
                     <i className="flaticon-expand"></i>
                   </button>
                 </OverlayTrigger>
-              </li>
-              <li>
+              </li> */}
+              {/* <li>
                 <OverlayTrigger
                   placement="right"
                   delay={{ show: 250, hide: 400 }}
@@ -131,8 +126,8 @@ const RelatedProduct = ({
                     <i className="flaticon-heart-1"></i>
                   </button>
                 </OverlayTrigger>
-              </li>
-              <li>
+              </li> */}
+              {/* <li>
                 <OverlayTrigger
                   placement="right"
                   delay={{ show: 250, hide: 400 }}
@@ -142,15 +137,18 @@ const RelatedProduct = ({
                     <i className="flaticon-add"></i>
                   </button>
                 </OverlayTrigger>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
         <div className="product-info-bottom">
           <div className="product-price">
             <span>
-              {`$ ${productData.price}`}
-              <label>/Month</label>
+              {`${productData.price} FCFA`}
+              <label>
+                {" "}
+                {productData.category == "Location" ? "/Mois" : ""}
+              </label>
             </span>
           </div>
         </div>

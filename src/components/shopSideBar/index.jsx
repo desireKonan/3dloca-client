@@ -1,9 +1,9 @@
 import {
+  bedBath,
   getIndividualAminities,
   getIndividualAminitiesList,
-  priceRange,
-  bedBath,
   getIndividualCategories,
+  priceRange,
   setActiveSort,
 } from "@/lib/product";
 import FilterByPrice from "../FilterByPrice";
@@ -17,14 +17,14 @@ const SideBar = ({ products, getSortParams }) => {
   return (
     <>
       <aside className="sidebar ltn__shop-sidebar ltn__right-sidebar">
-        <h3 className="mb-10">Advance Information</h3>
-        <label className="mb-30">
+        <h3 className="mb-10">Filtre</h3>
+        {/* <label className="mb-30">
           <small>About 9,620 results (0.62 seconds) </small>
-        </label>
+        </label> */}
         {/* <!-- Advance Information widget --> */}
         <div className="widget ltn__menu-widget">
-          <h4 className="ltn__widget-title">Property Type</h4>
-          {aminities.length > 0 ? (
+          {/* <h4 className="ltn__widget-title">Property Type</h4> */}
+          {/* {aminities.length > 0 ? (
             <>
               <ul>
                 {aminities &&
@@ -44,7 +44,6 @@ const SideBar = ({ products, getSortParams }) => {
                             <span className="checkmark"></span>
                           </label>
                           <span className="categorey-no">
-                            {/* {products[key < aminities.length ? key : 1].price} */}
                           </span>
                         </div>
                       </li>
@@ -54,11 +53,11 @@ const SideBar = ({ products, getSortParams }) => {
             </>
           ) : (
             "No categories found"
-          )}
+          )} */}
 
-          <hr />
-          <h4 className="ltn__widget-title">Amenities</h4>
-          {aminitiesList.length > 0 ? (
+          {/* <hr /> */}
+          {/* <h4 className="ltn__widget-title">Amenities</h4> */}
+          {/* {aminitiesList.length > 0 ? (
             <>
               <ul>
                 {aminitiesList &&
@@ -78,7 +77,6 @@ const SideBar = ({ products, getSortParams }) => {
                             <span className="checkmark"></span>
                           </label>
                           <span className="categorey-no">
-                            {/* {products[key < aminities.length ? key : 1].price} */}
                           </span>
                         </div>
                       </li>
@@ -88,9 +86,9 @@ const SideBar = ({ products, getSortParams }) => {
             </>
           ) : (
             "No categories found"
-          )}
+          )} */}
 
-          <hr />
+          {/* <hr />
           <h4 className="ltn__widget-title">Price Renge</h4>
           {priceRanges.length > 0 ? (
             <>
@@ -112,7 +110,6 @@ const SideBar = ({ products, getSortParams }) => {
                             <span className="checkmark"></span>
                           </label>
                           <span className="categorey-no">
-                            {/* {products[key < aminities.length ? key : 1].price} */}
                           </span>
                         </div>
                       </li>
@@ -122,19 +119,19 @@ const SideBar = ({ products, getSortParams }) => {
             </>
           ) : (
             "No categories found"
-          )}
+          )} */}
 
           {/* <hr /> */}
           {/* <!-- Price Filter Widget --> */}
           <div className="ltn__price-filter-widget mt-30">
-            <h4 className="ltn__widget-title">Filter by price</h4>
+            <h4 className="ltn__widget-title">Filtrer par prix</h4>
             <div className="price_filter">
               <FilterByPrice />
             </div>
           </div>
           <hr />
-          <h4 className="ltn__widget-title">Bed/bath</h4>
-          {bedBaths.length > 0 ? (
+          {/* <h4 className="ltn__widget-title">Bed/bath</h4> */}
+          {/* {bedBaths.length > 0 ? (
             <>
               <ul>
                 {bedBaths &&
@@ -154,7 +151,6 @@ const SideBar = ({ products, getSortParams }) => {
                             <span className="checkmark"></span>
                           </label>
                           <span className="categorey-no">
-                            {/* {products[key < aminities.length ? key : 1].price} */}
                           </span>
                         </div>
                       </li>
@@ -165,8 +161,8 @@ const SideBar = ({ products, getSortParams }) => {
           ) : (
             "No categories found"
           )}
-          <hr />
-          <h4 className="ltn__widget-title">Catagory</h4>
+          <hr /> */}
+          <h4 className="ltn__widget-title">Catégorie</h4>
           {categories.length > 0 ? (
             <>
               <ul>

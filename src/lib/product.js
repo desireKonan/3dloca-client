@@ -112,10 +112,10 @@ export const getSortedProducts = (products, sortType, sortValue) => {
       );
     }
     if (sortType === "category") {
-      return products.filter(
-        (product) =>
-          product.category.filter((single) => single === sortValue)[0]
-      );
+      // return products.filter(
+      //   (product) =>
+      //     product.category.filter((single) => single === sortValue)[0]
+      // );
     }
     if (sortType === "tag") {
       return products.filter(
@@ -168,14 +168,16 @@ const getIndividualColorObjectArray = (array) => {
 export const getIndividualCategories = (products) => {
   let productCategories = [];
   products &&
-    products.map((product) => {
-      return (
-        product.category &&
-        product.category.map((single) => {
-          return productCategories.push(single);
-        })
-      );
-    });
+  products.forEach((product) => {
+    // Correction ici : si c'est un tableau, on boucle, sinon on push la string
+    if (Array.isArray(product.category)) {
+      product.category.forEach((single) => {
+        productCategories.push(single);
+      });
+    } else if (typeof product.category === "string") {
+      productCategories.push(product.category);
+    }
+  });
   var individualProductCategories = [];
   var obj = {};
   var newArr = [];

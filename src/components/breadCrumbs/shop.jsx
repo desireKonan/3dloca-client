@@ -21,7 +21,7 @@ const ShopBreadCrumb = ({ title, currentSlug, sectionPace }) => {
                         <span className="ltn__secondary-color">
                           <FaHome className="me-2" />
                         </span>
-                        <span className="me-2">Home</span>
+                        <span className="me-2">Accueil</span>
                         <FaAngleRight />
                       </Link>
                     </li>

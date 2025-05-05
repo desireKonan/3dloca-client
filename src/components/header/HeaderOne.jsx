@@ -1,16 +1,14 @@
-import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { productSlug } from "@/lib/product";
+import MenuList from "@/components/header/elements/menuList";
+import clsx from "clsx";
 import Link from "next/link";
-import HeaderTopBarOne from "./headerTopBar/headerTopBarStyleOne";
-import HeaderCartMenu from "./elements/headerCartMenu";
-import MobileMenu from "./elements/mobileMennu";
+import { useEffect, useState } from "react";
+import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import clsx from "clsx";
-import { FaCartArrowDown, FaRegUser, FaSearch, FaTimes } from "react-icons/fa";
-import MenuList from "@/components/header/elements/menuList";
+import { FaRegUser } from "react-icons/fa";
+import { useSelector } from "react-redux";
+import HeaderCartMenu from "./elements/headerCartMenu";
+import MobileMenu from "./elements/mobileMennu";
 const HeaderStyleOne = function ({ SetToggleClassName, topbar }) {
   const [searchFormOpener, searchFormOpenerSet] = useState(false);
 
@@ -85,7 +83,7 @@ const HeaderStyleOne = function ({ SetToggleClassName, topbar }) {
     <>
       <header className="ltn__header-area ltn__header-5">
         {/* <!-- ltn__header-top-area start --> */}
-        {topbar ? <HeaderTopBarOne /> : null}
+        {/* {topbar ? <HeaderTopBarOne /> : null} */}
 
         {/* <!-- ltn__header-top-area end --> */}
 
@@ -102,7 +100,7 @@ const HeaderStyleOne = function ({ SetToggleClassName, topbar }) {
                 <div className="site-logo-wrap">
                   <div className="site-logo">
                     <Link href="/">
-                      <img src="/img/logo.png" alt="Logo" />
+                      {/* <img src="/img/logo.png" alt="Logo" /> */}
                     </Link>
                   </div>
                 </div>
@@ -117,14 +115,14 @@ const HeaderStyleOne = function ({ SetToggleClassName, topbar }) {
                 </div>
               </Col>
               <Col className="ltn__header-options ltn__header-options-2 mb-sm-20">
-                {/* <!-- header-search-1 --> */}
+                {/* <!-- header-search-1 --> 
                 <div className="header-search-wrap">
                   <div
                     className={`header-search-1 ${
                       searchFormOpener ? "search-open" : ""
                     }`}
                   >
-                    {/* search-open */}
+            
                     <div className="search-icon">
                       <span onClick={searchForm}>
                         <FaSearch className="icon-search for-search-show" />
@@ -170,7 +168,7 @@ const HeaderStyleOne = function ({ SetToggleClassName, topbar }) {
                       )}
                     </ul>
                   </div>
-                </div>
+                </div>*/}
                 {/* <!-- user-menu --> */}
                 <div className="ltn__drop-menu user-menu">
                   <ul>
@@ -180,22 +178,22 @@ const HeaderStyleOne = function ({ SetToggleClassName, topbar }) {
                       </Link>
                       <ul>
                         <li>
-                          <Link href="/login">Sign in</Link>
+                          <Link href="/login">Se connecter</Link>
                         </li>
                         <li>
-                          <Link href="/register">Register</Link>
+                          <Link href="/register">S&apos;inscrire</Link>
                         </li>
                         <li>
-                          <Link href="/my-account">My Account</Link>
+                          <Link href="/my-account">Mon compte</Link>
                         </li>
                         <li>
-                          <Link href="/wishlist">Wishlist</Link>
+                          <Link href="/wishlist">Favoris</Link>
                         </li>
                       </ul>
                     </li>
                   </ul>
                 </div>
-                {/* <!-- mini-cart --> */}
+                {/* <!-- mini-cart --> 
                 <div className="mini-cart-icon">
                   <button
                     onClick={cartMenu}
@@ -204,7 +202,7 @@ const HeaderStyleOne = function ({ SetToggleClassName, topbar }) {
                     }`}
                   >
                     <FaCartArrowDown />
-                    {/* <sup>6</sup> */}
+                 <sup>6</sup> 
 
                     {cartItems.length > 0 ? (
                       <sup>{cartItems.length}</sup>
@@ -212,7 +210,7 @@ const HeaderStyleOne = function ({ SetToggleClassName, topbar }) {
                       <sup>0</sup>
                     )}
                   </button>
-                </div>
+                </div>*/}
                 {/* <!-- mini-cart --> */}
                 {/* <!-- Mobile Menu Button --> */}
                 <div className="mobile-menu-toggle d-xl-none">

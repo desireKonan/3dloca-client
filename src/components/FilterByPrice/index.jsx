@@ -1,5 +1,5 @@
-import ReactSlider from "react-slider";
 import { useState } from "react";
+import ReactSlider from "react-slider";
 
 const FilterByPrice = () => {
   const min = 0;
@@ -10,7 +10,7 @@ const FilterByPrice = () => {
   return (
     <>
       <div className="price_slider_amount">
-        <span>Your range:</span>
+        <span>Selection:</span>
         <span>{value[0]}</span>
         <span>-</span>
         <span>{value[1]}</span>

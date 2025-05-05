@@ -171,7 +171,9 @@ font-family: 'Poppins', sans-serif;
   padding-left: 0;
 }
 
-.ltn__no-gutter-all .slick-slide{padding: 0 0;}
+.ltn__no-gutter-all .slick-slide {
+  padding: 0 0;
+}
 
 @media (min-width: 992px) {
   /* Modify this based on column def */
@@ -448,8 +450,11 @@ p {
 a {
   color: inherit;
   text-decoration: none !important;
-  color: var(--ltn__paragraph-color);
+  // color: black !important;
   transition: all 0.3s ease 0s;
+}
+body a {
+  // color: black !important;
 }
 .ltn__checkout-inner button {
   font-family: var(--ltn__heading-font);

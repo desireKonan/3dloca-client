@@ -17,7 +17,7 @@ function Login() {
   return (
     <>
       <LayoutOne topbar={true}>
-        <ShopBreadCrumb title="Account" sectionPace="" currentSlug="Login" />
+        {/* <ShopBreadCrumb title="Mon Compte" sectionPace="" currentSlug="Connexion" /> */}
 
         {/* <!-- LOGIN AREA START --> */}
         <div className="ltn__login-area pb-65">
@@ -25,9 +25,9 @@ function Login() {
             <Row>
               <Col xs={12}>
                 <div className="section-title-area text-center">
-                  <h1 className="section-title">Sign In <br />To  Your Account</h1>
-                  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. <br />
-                    Sit aliquid,  Non distinctio vel iste.</p>
+                  <h1 className="section-title">Connexion<br />
+                    à votre compte</h1>
+                  <p>Vous avez déjà un compte sur notre site ? Connectez-vous pour accéder à vos informations personnelles, vos commandes et vos wishlist.</p>
                 </div>
               </Col>
             </Row>
@@ -35,24 +35,23 @@ function Login() {
               <Col xs={12} lg={6}>
                 <div className="account-login-inner ltn__form-box contact-form-box">
                   <form action="#">
-                    <input type="text" name="email" placeholder="Email*" />
-                    <input type="password" name="password" placeholder="Password*" />
+                    <input type="text" name="email" placeholder="Adresse e-mail*" />
+                    <input type="password" name="password" placeholder="Mot de passe*" />
                     <div className="btn-wrapper mt-0">
-                      <button className="theme-btn-1 btn btn-block" type="submit">SIGN IN</button>
+                      <button className="theme-btn-1 btn btn-block" type="submit">Se connecter</button>
                     </div>
                   </form>
                   <div className="go-to-btn mt-20">
-                    <button onClick={handleShow}><small>FORGOTTEN YOUR PASSWORD?</small></button>
+                    <button onClick={handleShow}><small>Mot de passe oublié ?</small></button>
                   </div>
                 </div>
               </Col>
               <Col xs={12} lg={6}>
                 <div className="account-create text-center pt-50">
-                  <h4>{`DON'T HAVE AN ACCOUNT?`}</h4>
-                  <p>Add items to your wishlistget personalised recommendations <br />
-                    check out more quickly track your orders register</p>
+                  <h4>{`Vous n'avez pas de compte ?`}</h4>
+                  <p>Créez un compte pour accéder à vos informations personnelles, vos commandes et vos wishlist.</p>
                   <div className="btn-wrapper">
-                    <Link href="/register" className="theme-btn-1 btn black-btn">CREATE ACCOUNT</Link>
+                    <Link href="/register" className="theme-btn-1 btn black-btn">Créer un compte</Link>
                   </div>
                 </div>
               </Col>
@@ -98,12 +97,12 @@ function Login() {
               <div className="row">
                 <div className="col-12">
                   <div className="modal-product-info text-center">
-                    <h4>FORGET PASSWORD?</h4>
-                    <p className="added-cart"> Enter you register email.</p>
+                    <h4>Mot de passe oublié ?</h4>
+                    <p className="added-cart"> Entrez votre adresse e-mail de connexion.</p>
                     <form action="#" class="ltn__form-box">
-                      <input type="text" name="email" placeholder="Type your register email*" />
+                      <input type="text" name="email" placeholder="Adresse e-mail de connexion*" />
                       <div className="btn-wrapper mt-0">
-                        <button className="theme-btn-1 btn btn-full-width-2" type="submit">Submit</button>
+                        <button className="theme-btn-1 btn btn-full-width-2" type="submit">Envoyer</button>
                       </div>
                     </form>
                   </div>
