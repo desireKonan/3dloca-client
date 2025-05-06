@@ -20,7 +20,7 @@ const ProductList = ({
   return (
     <div className="ltn__product-item ltn__product-item-4 ltn__product-item-5">
       <div className="product-img">
-        <Link href={`/${baseUrl}/${slug}`}>
+        <Link href={`/${baseUrl}/${productData.id}`}>
           <img
             src={`https://picsum.photos/seed/house${Math.floor(Math.random()*1000)}/400/300`}
             alt="Maison"
@@ -46,7 +46,7 @@ const ProductList = ({
           </div>
         </div>
         <h2 className="product-title">
-          <Link href={`/${baseUrl}/${slug}`}>{productData.title}</Link>
+          <Link href={`/${baseUrl}/${productData.id}`}>{productData.title}</Link>
         </h2>
         <div className="product-img-location">
           <ul>
@@ -68,7 +68,7 @@ const ProductList = ({
       <div className="product-info-bottom">
         <div className="real-estate-agent">
           <div className="agent-img">
-            <Link href={`/${baseUrl}/${slug}`}>
+            <Link href={`/${baseUrl}/${productData.id}`}>
               <img
                 src={`/img/blog/author.jpg`}
                 alt={`${productData.title}`}
